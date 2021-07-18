@@ -1,14 +1,24 @@
 dimensions = (20,3)
 
-def box(parameter=None, dimensions=(20,3), content=None, boxChars=("═", "║", "╔", "╗", "╚", "╝"), ):
-    if (type(parameter) == tuple or type(parameter) == list) and len(parameter) == 2 and type(parameter[0]) == int:
+def box(parameter=None, dimensions=None, content=None, boxChars=("═", "║", "╔", "╗", "╚", "╝"), ):
+    if parameter == None and dimensions == None and content == None:
+        raise ValueError("No parameter specified")
+    if parameter is not None:
+        if len(parameter) == 2 and type(parameter[0]) == int:
+            dimensions = parameter
+        else:
+            content = parameter
+
+    """
+            if (type(parameter) == tuple or type(parameter) == list) and len(parameter) == 2 and type(parameter[0]) == int:
         dimensions = parameter
     elif (type(parameter) == tuple or type(parameter) == list or type(parameter) == str):
         content = parameter
+    """
     if type(content) == str:
         content = content.split("\n")
-    elif content != None:
-        dimensions=(
+    if dimensions == None and content != None:
+        dimensions = (
             max(map(len, content)),
             len(content)
         )
