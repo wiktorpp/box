@@ -9,12 +9,6 @@ def box(parameter=None, dimensions=None, content=None, boxChars=("═", "║", "
         else:
             content = parameter
 
-    """
-            if (type(parameter) == tuple or type(parameter) == list) and len(parameter) == 2 and type(parameter[0]) == int:
-        dimensions = parameter
-    elif (type(parameter) == tuple or type(parameter) == list or type(parameter) == str):
-        content = parameter
-    """
     if type(content) == str:
         content = content.split("\n")
     if dimensions == None and content != None:
