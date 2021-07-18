@@ -1,8 +1,9 @@
 dimensions = (20,3)
 
-def box(parameter=None, dimensions=None, content=None, boxChars=("═", "║", "╔", "╗", "╚", "╝"), ):
+def box(parameter=None, content=None, dimensions=None, boxChars=("═", "║", "╔", "╗", "╚", "╝")):
     if parameter == None and dimensions == None and content == None:
         raise ValueError("Box!")
+    
     if len(parameter) == 2 and type(parameter[0]) == int:
         dimensions = parameter
     else:
@@ -10,7 +11,8 @@ def box(parameter=None, dimensions=None, content=None, boxChars=("═", "║", "
 
     if type(content) == str:
         content = content.split("\n")
-    if dimensions == None and content != None:
+
+    if dimensions == None:
         dimensions = (
             max(map(len, content)),
             len(content)
@@ -21,6 +23,7 @@ def box(parameter=None, dimensions=None, content=None, boxChars=("═", "║", "
     for j in range(dimensions[0]):
         box += boxChars[0]
     box += boxChars[3] + "\n"
+
     for i in range(dimensions[1]):
         box += boxChars[1]
         for j in range(dimensions[0]):
@@ -29,6 +32,7 @@ def box(parameter=None, dimensions=None, content=None, boxChars=("═", "║", "
             except:
                 box += " "
         box += boxChars[1] + "\n"
+
     box += boxChars[4]
     for j in range(dimensions[0]):
         box += boxChars[0]
