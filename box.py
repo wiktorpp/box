@@ -3,11 +3,10 @@ dimensions = (20,3)
 def box(parameter=None, dimensions=None, content=None, boxChars=("═", "║", "╔", "╗", "╚", "╝"), ):
     if parameter == None and dimensions == None and content == None:
         raise ValueError("Box!")
-    if parameter is not None:
-        if len(parameter) == 2 and type(parameter[0]) == int:
-            dimensions = parameter
-        else:
-            content = parameter
+    if len(parameter) == 2 and type(parameter[0]) == int:
+        dimensions = parameter
+    else:
+        content = parameter
 
     if type(content) == str:
         content = content.split("\n")
